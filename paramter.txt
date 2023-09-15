@@ -1,5 +1,5 @@
 ###
-autotrain llm --train --project_name my-llm --model facebook/xglm-564M --data_path . --use_peft --use_int4 --learning_rate 2e-4 --train_batch_size 12 --num_train_epochs 3 --trainer sft --target_modules q_proj,v_proj,k_proj,out_proj,fc1,fc2
+autotrain llm --train --project_name my-llm --model pythainlp/wangchanglm-7.5B-sft-enth --data_path . --use_peft --use_int4 --learning_rate 2e-4 --train_batch_size 12 --num_train_epochs 3 --trainer sft --target_modules q_proj,v_proj,k_proj,out_proj,fc1,fc2 --valid_split
 
 ####Parameter
 usage: autotrain <command> [<args>] llm [-h] [--train] [--deploy] [--inference] [--data_path DATA_PATH] [--train_split TRAIN_SPLIT] [--valid_split VALID_SPLIT] [--text_column TEXT_COLUMN] [--model MODEL] [--learning_rate LEARNING_RATE] [--num_train_epochs NUM_TRAIN_EPOCHS]
