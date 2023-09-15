@@ -1,0 +1,90 @@
+###
+autotrain llm --train --project_name my-llm --model facebook/xglm-564M --data_path . --use_peft --use_int4 --learning_rate 2e-4 --train_batch_size 12 --num_train_epochs 3 --trainer sft --target_modules q_proj,v_proj,k_proj,out_proj,fc1,fc2
+
+####Parameter
+usage: autotrain <command> [<args>] llm [-h] [--train] [--deploy] [--inference] [--data_path DATA_PATH] [--train_split TRAIN_SPLIT] [--valid_split VALID_SPLIT] [--text_column TEXT_COLUMN] [--model MODEL] [--learning_rate LEARNING_RATE] [--num_train_epochs NUM_TRAIN_EPOCHS]
+                                        [--train_batch_size TRAIN_BATCH_SIZE] [--warmup_ratio WARMUP_RATIO] [--gradient_accumulation_steps GRADIENT_ACCUMULATION_STEPS] [--optimizer OPTIMIZER] [--scheduler SCHEDULER] [--weight_decay WEIGHT_DECAY] [--max_grad_norm MAX_GRAD_NORM] [--seed SEED]
+                                        [--add_eos_token] [--block_size BLOCK_SIZE] [--use_peft] [--lora_r LORA_R] [--lora_alpha LORA_ALPHA] [--lora_dropout LORA_DROPOUT] [--logging_steps LOGGING_STEPS] [--project_name PROJECT_NAME] [--evaluation_strategy EVALUATION_STRATEGY]
+                                        [--save_total_limit SAVE_TOTAL_LIMIT] [--save_strategy SAVE_STRATEGY] [--auto_find_batch_size] [--fp16] [--push_to_hub] [--use_int8] [--model_max_length MODEL_MAX_LENGTH] [--repo_id REPO_ID] [--use_int4] [--trainer TRAINER] [--target_modules TARGET_MODULES]
+                                        [--merge_adapter] [--token TOKEN] [--backend BACKEND] [--username USERNAME]
+
+✨ Run AutoTrain LLM
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --train               Train the model
+  --deploy              Deploy the model
+  --inference           Run inference
+  --data_path DATA_PATH, --data-path DATA_PATH
+                        Train dataset to use
+  --train_split TRAIN_SPLIT, --train-split TRAIN_SPLIT
+                        Test dataset split to use
+  --valid_split VALID_SPLIT, --valid-split VALID_SPLIT
+                        Validation dataset split to use
+  --text_column TEXT_COLUMN, --text-column TEXT_COLUMN
+                        Text column to use
+  --model MODEL         Model to use
+  --learning_rate LEARNING_RATE, --lr LEARNING_RATE, --learning-rate LEARNING_RATE
+                        Learning rate to use
+  --num_train_epochs NUM_TRAIN_EPOCHS, --epochs NUM_TRAIN_EPOCHS
+                        Number of training epochs to use
+  --train_batch_size TRAIN_BATCH_SIZE, --train-batch-size TRAIN_BATCH_SIZE, --batch-size TRAIN_BATCH_SIZE
+                        Training batch size to use
+  --warmup_ratio WARMUP_RATIO, --warmup-ratio WARMUP_RATIO
+                        Warmup proportion to use
+  --gradient_accumulation_steps GRADIENT_ACCUMULATION_STEPS, --gradient-accumulation-steps GRADIENT_ACCUMULATION_STEPS, --gradient-accumulation GRADIENT_ACCUMULATION_STEPS
+                        Gradient accumulation steps to use
+  --optimizer OPTIMIZER
+                        Optimizer to use
+  --scheduler SCHEDULER
+                        Scheduler to use
+  --weight_decay WEIGHT_DECAY, --weight-decay WEIGHT_DECAY
+                        Weight decay to use
+  --max_grad_norm MAX_GRAD_NORM, --max-grad-norm MAX_GRAD_NORM
+                        Max gradient norm to use
+  --seed SEED           Seed to use
+  --add_eos_token, --add-eos-token
+                        Add EOS token to use
+  --block_size BLOCK_SIZE, --block-size BLOCK_SIZE
+                        Block size to use
+  --use_peft, --use-peft
+                        Use PEFT to use
+  --lora_r LORA_R, --lora-r LORA_R
+                        Lora r to use
+  --lora_alpha LORA_ALPHA, --lora-alpha LORA_ALPHA
+                        Lora alpha to use
+  --lora_dropout LORA_DROPOUT, --lora-dropout LORA_DROPOUT
+                        Lora dropout to use
+  --logging_steps LOGGING_STEPS, --logging-steps LOGGING_STEPS
+                        Logging steps to use
+  --project_name PROJECT_NAME, --project-name PROJECT_NAME
+                        Output directory
+  --evaluation_strategy EVALUATION_STRATEGY, --evaluation-strategy EVALUATION_STRATEGY
+                        Evaluation strategy to use
+  --save_total_limit SAVE_TOTAL_LIMIT, --save-total-limit SAVE_TOTAL_LIMIT
+                        Save total limit to use
+  --save_strategy SAVE_STRATEGY, --save-strategy SAVE_STRATEGY
+                        Save strategy to use
+  --auto_find_batch_size, --auto-find-batch-size
+                        Auto find batch size True/False
+  --fp16                FP16 True/False
+  --push_to_hub, --push-to-hub
+                        Push to hub True/False. In case you want to push the trained model to huggingface hub
+  --use_int8, --use-int8
+                        Use int8 True/False
+  --model_max_length MODEL_MAX_LENGTH, --max-len MODEL_MAX_LENGTH, --max-length MODEL_MAX_LENGTH
+                        Model max length to use
+  --repo_id REPO_ID, --repo-id REPO_ID
+                        Repo id for hugging face hub. Format is username/repo_name
+  --use_int4, --use-int4
+                        Use int4 True/False
+  --trainer TRAINER     Trainer type to use
+  --target_modules TARGET_MODULES, --target-modules TARGET_MODULES
+                        Target modules to use
+  --merge_adapter, --merge-adapter
+                        Use this flag to merge PEFT adapter with the model
+  --token TOKEN         Hugingface token to use
+  --backend BACKEND     Backend to use: default or spaces. Spaces backend requires push_to_hub and repo_id
+  --username USERNAME   Huggingface username to use
+
+###
