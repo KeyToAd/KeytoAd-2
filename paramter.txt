@@ -1,6 +1,5 @@
 ###
-autotrain llm --train --project_name my-llm --model pythainlp/wangchanglm-7.5B-sft-enth --data_path . --use_peft --use_int8 --learning_rate 2e-4 --num_train_epochs 3 --trainer sft --target_modules q_proj,v_proj,k_proj,out_proj,fc1,fc2 --valid_split train --logging_steps 1 --fp16 --lora_r 128 --auto_find_batch_size --gradient_accumulation_steps 32
-
+autotrain llm --train --project_name my-llm --model pythainlp/wangchanglm-7.5B-sft-enth --data_path . --use_peft --use_int8 --learning_rate 1e-4 --num_train_epochs 5 --trainer sft --target_modules q_proj,v_proj,k_proj,out_proj,fc1,fc2 --valid_split val --logging_steps 1 --fp16 --lora_r 128 --auto_find_batch_size --gradient_accumulation_steps 32
 ####Parameter
 usage: autotrain <command> [<args>] llm [-h] [--train] [--deploy] [--inference] [--data_path DATA_PATH] [--train_split TRAIN_SPLIT] [--valid_split VALID_SPLIT] [--text_column TEXT_COLUMN] [--model MODEL] [--learning_rate LEARNING_RATE] [--num_train_epochs NUM_TRAIN_EPOCHS]
                                         [--train_batch_size TRAIN_BATCH_SIZE] [--warmup_ratio WARMUP_RATIO] [--gradient_accumulation_steps GRADIENT_ACCUMULATION_STEPS] [--optimizer OPTIMIZER] [--scheduler SCHEDULER] [--weight_decay WEIGHT_DECAY] [--max_grad_norm MAX_GRAD_NORM] [--seed SEED]
