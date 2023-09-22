@@ -1,5 +1,8 @@
+srun --gres=gpu -c 8 --mem 32G --time 1-0 --pty /bin/bash
+
 ###
-autotrain llm --train --project_name my-llm --model facebook/xglm-564M --data_path . --use_peft --use_int4 --learning_rate 2e-4 --train_batch_size 12 --num_train_epochs 3 --trainer sft --target_modules q_proj,v_proj,k_proj,out_proj,fc1,fc2
+
+autotrain llm --train --project_name my-llm --model NousResearch/Llama-2-7b-hf --data_path . --use_peft --use_int8 --learning_rate 1e-4 --num_train_epochs 5 --trainer sft --target_modules q_proj,v_proj,k_proj,out_proj,fc1,fc2 --valid_split val --logging_steps 1 --fp16 --lora_r 128 --auto_find_batch_size --gradient_accumulation_steps 32  --save_total_limit 3
 
 ####Parameter
 usage: autotrain <command> [<args>] llm [-h] [--train] [--deploy] [--inference] [--data_path DATA_PATH] [--train_split TRAIN_SPLIT] [--valid_split VALID_SPLIT] [--text_column TEXT_COLUMN] [--model MODEL] [--learning_rate LEARNING_RATE] [--num_train_epochs NUM_TRAIN_EPOCHS]
