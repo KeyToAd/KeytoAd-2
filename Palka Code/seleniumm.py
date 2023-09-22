@@ -13,7 +13,7 @@ chrome_options = Options()
 # chrome_options.add_argument('--disable-dev-shm-usage')
 
 def scrape_page(i):
-    i+=17
+    i+=13
     driver = webdriver.Chrome(options=chrome_options)
     driver.get(f"https://www.watsons.co.th/th/search?text=%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B3%E0%B8%AD%E0%B8%B2%E0%B8%87&useDefaultSearch=false&sortCode=bestSeller&pageSize=64&currentPage={i}")
     time.sleep(5)
@@ -53,7 +53,7 @@ def scrape_page(i):
     return lst_name, lst_detail
 
 if __name__ == "__main__":
-    num_pages = 5
+    num_pages = 4
     num_processes = multiprocessing.cpu_count()  # You can adjust this as needed
 
     pool = multiprocessing.Pool(processes=num_processes)
@@ -69,5 +69,4 @@ if __name__ == "__main__":
         all_details.extend(details)
 
     df = pd.DataFrame(list(zip(all_names, all_details)), columns=['Name', 'Detail'])
-    print(all_names)
     df.to_csv("Watson104.csv", index=False)
